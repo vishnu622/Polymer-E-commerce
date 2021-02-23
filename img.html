@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/Whiteneak.jpg">
+</body>
+</html>
+
+
+<app-drawer-layout fullbleed=""  narrow="{{narrow}}">
+    <!-- Drawer content -->
+    <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+      <app-toolbar>Menu</app-toolbar>
+      <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+        <a name="view1" href="[[rootPath]]log-in">Login</a>
+        <a name="view2" href="[[rootPath]]product-details">Women's Wear</a>
+        <a name="view3" href="[[rootPath]]total-products">Mens's Wear</a>
+      </iron-selector>
+    </app-drawer>
+
+
+
+
+
+    
+<style include="app-grid-style">
+
+    :host {
+      --app-grid-columns: 3;
+      --app-grid-item-height: 500px;
+    }
+    
+    ul {
+      padding: 0px;
+      list-style: none;
+    }
+    
+    .item {
+      background-color: white;
+      padding:20px;
+    }
+    
+    @media (max-width: 640px) {
+      :host {
+        --app-grid-columns: 1;
+      }
+    }
+    img{
+    
+      height:250px;
+      width:250px;
+    }
+    item{
+      text-align:center;
+    }
+    
+    
+    paper-button{
+      margin-top:25px;
+      margin-left:35px;
+      padding:8px;
+      border-radius:5px;
+      color:#fff;
+      background:#236666;
+    
+    }
+    h1{
+      text-align:center;
+    }
+    
+    </style>
+    <h1>Women's Wear</h1>
+    <ul class="app-grid">
+    
+    <li class="item">
+    <div class="title"><span class="shop-item-title">Silver Panjabi</span></div>
+    <img src="../images/panjabi6.jpg"><br/>
+    <div> <span class="shop-item-price">$14.00</span><br/></div>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+    
+    <li class="item">
+    <div class="title" ><span class="shop-item-title">Black Panjabi</span></div>
+    <img src="../images/panjabi5.jpg"><br/>
+    <span class="shop-item-price">$20.00</span><br/>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+    
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Multicolor Panjabi</span></div>
+    <img src="../images/panjabi4.jpg"><br/>
+    <div><span class="shop-item-price">$55.00</span><br/></div>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+    
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Maroon Panjabi</span></div>
+    <img src="../images/panjabi3.jpg"><br/>
+    <span class="shop-item-price">$50.00</span><br/>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    
+    </li>
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Blue Panjabi</span></div>
+    <img src="../images/punjabi2.jpg"><br/>
+    <span class="shop-item-price">$30.00</span><br/>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    
+    </li>
+    <li class="item">
+    <div class="title" ><span class="shop-item-title">Green Panjabi</span></div>
+    <img src="../images/punjabi1.jpg"><br/>
+    <span class="shop-item-price">$14.99</span><br/>
+    <paper-button class="btn" raised on-click="handleClick">Add to Cart</paper-button>
+    
+    </li>
+    </ul>
+
+
+    static get properties() {
+      return{
+        isProductSelected: {
+          type: Boolean,
+          value: false
+        },
+        selectedProduct: {
+          type: Object,
+          value:{}
+        },
+       
+    ProductList:{
+      value(){
+ return [
+          {
+            id:'0',
+            productName:'Maroonneak',
+            price:'14',
+            img: "../t-shirt.jpg",
+            Brand: 'Roadstar',
+            color: 'Maroon'
+          },
+          {
+            id:'1',
+            productName:'Greenneak',
+            price:'20',
+            img: "../images/greenneak.jpg",
+            Brand: 'Roadstar',
+            color: 'Green'
+          },
+          {
+            id:'2',
+            productName:'Multicolor',
+            price:'55',
+            img: "../images/Multicolor.jpg",
+            Brand: 'Roadstar',
+            color: 'White&Black'
+          },
+          {
+            id:'3',
+            productName:'LiteBlueneak',
+            price:'50',
+            img: "../images/LiteBlue.jpg",
+            Brand: 'Roadstar',
+            color: 'Blue'
+          },
+          {
+            id:'4',
+            productName:'Blackneak',
+            price:'30',
+            img: "../images/BlackNeak.jpg",
+            Brand: 'Roadstar',
+            color: 'Black'
+          },
+          {
+            id:'5',
+            productName:'Yellowneak',
+            price:'90',
+            img: "../images/yelloneak.jpg",
+            Brand: 'Roadstar',
+            color: 'Yellow'
+          }
+          
+        ]
+      }
+
+
+
+
+
+      static get properties(){
+        return{
+          products: Array,
+          value: productList,
+          notify: true
+        },
+        productId: {
+          type:Number,
+          notify: true,
+          observer: "_checkId"
+        }
+
+
+        <paper-input class="custom" label="Name" id="$name"  always-float-label auto-validate  pattern="[a-zA-Z]*" error-message="Provide valid details!" char-counter maxlength="10" required>
+        </paper-input>
+
+
+
+        <paper-input class="custom" label="password" type="password" id="password" always-float-label auto-validate pattern="[a-zA-Z0-9]*" required>
+        </paper-input>
+
+
+
+        /**
+ * @license
+ * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import './shared-styles.js';
+import '@polymer/app-layout/app-layout.js';
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/paper-button/paper-button.js';
+
+
+
+
+
+class TotalProducts extends PolymerElement {
+ 
+    static get template() {
+
+    return html`
+    
+      <style include="shared-styles">
+        :host {
+          display: block;
+
+          padding: 10px;
+        }
+      </style>
+         
+      
+  <style include="app-grid-style">
+
+    :host {
+      --app-grid-columns: 3;
+      --app-grid-item-height: 450px;
+    }
+
+    ul {
+      padding: 0px;
+      list-style: none;
+    }
+
+    .item {
+      background-color: white;
+      padding:20px;
+    }
+
+    @media (max-width: 640px) {
+      :host {
+        --app-grid-columns: 1;
+      }
+    }
+    img{
+
+      height:250px;
+      width:250px;
+    }
+    item{
+      text-align:center;
+    }
+    title{
+      
+      margin-top:20px;
+      margin-left:30px;
+    }
+    shop-item-price{
+      text-align:center;
+    }
+    paper-button{
+      margin-top:10px;
+      margin-left:30px;
+      margin-bottom:10px;
+      color:#fff;
+      background:#236666;
+      border-radius:5px;
+
+    }
+    h1{
+      text-align:center;
+    }
+
+  </style>
+  <h1>Men's Wear</h1>
+  <ul class="app-grid">
+ 
+    <li class="item">
+    <div class="title"><span class="shop-item-title">Maroonneak</span></div>
+    <img src="../t-shirt.jpg"><br/>
+   <div> <span class="shop-item-price">$14</span><br/></div>
+    <paper-button  raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Greenneak</span></div>
+    <img src="../images/greenneak.jpg"><br/>
+    <span class="shop-item-price">$20</span><br/>
+    <paper-button  raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Multicolor</span></div>
+    <img src="../images/Multicolor.jpg"><br/>
+    <div><span class="shop-item-price">$55</span><br/></div>
+    <paper-button raised on-click="handleClick">Add to Cart</paper-button>
+    </li>
+
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">LiteBlueneak</span></div>
+    <img src="../images/LiteBlue.jpg"><br/>
+    <span class="shop-item-price">$50</span><br/>
+    <paper-button  raised on-click="handleClick">Add to Cart</paper-button>
+
+    </li>
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Blackneak</span></div>
+    <img src="../images/BlackNeak.jpg"><br/>
+    <span class="shop-item-price">$30</span><br/>
+    <paper-button  raised on-click="handleClick">Add to Cart</paper-button>
+
+    </li>
+    <li class="item">
+    <div class="shop-item-title" ><span class="shop-item-title">Yellowneak</span></div>
+    <img src="../images/yelloneak.jpg"><br/>
+    <span class="shop-item-price">$90</span><br/>
+    <paper-button  raised on-click="handleClick">Add to Cart</paper-button>
+
+    </li>
+   </ul>
+   
+              
+    `;
+  }
+  handleClick(){
+    this.set('route.path','/product-details');
+  }
+
+    
+    
+  }
+
+
+window.customElements.define('total-products', TotalProducts);
+
+
+
+
+
+
+/**
+ * @license
+ * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import './shared-styles.js';
+import '@polymer/app-layout/app-layout.js';
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/paper-button/paper-button.js';
+
+class ProductDetails extends PolymerElement {
+  static get template() {
+    return html`
+    <style include="shared-styles">
+    :host {
+      display: block;
+
+      padding: 10px;
+    }
+  </style>
+     
+  <h1>Product-Details</h1>
+
+
+`;
+}
+}  
+
+window.customElements.define('product-details', ProductDetails);
+
+
+
+
+<div class="col-md-3">
+  <div class="card mb-3">
+
+    strip-whitespace=""
+
+    <div class="card-body"></div>
+
+
+
+    <div class="container mt-3">
+      <div class="row py-5 mt-5">
+
+
+        <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../assets/dist/css/style.css">
+
+
+
+    <p class="card-text" >Id: {{productId.Id}}</p>
+
+
+    <p>Category: {{item.ProductCategory}}</p>
